@@ -162,7 +162,6 @@
 /* Zone Chart Specific */
 .donut-center-text {
     text-anchor: middle;
-    dominant-baseline: middle;
 }
 
 /* Chart Point Styles */

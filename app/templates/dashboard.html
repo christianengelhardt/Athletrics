@@ -76,10 +76,13 @@
 {% endblock %}
 
 {% block scripts %}
-<!-- Application Scripts -->
+<!-- Update these paths -->
 <script type="module" src="{{ url_for('static', filename='js/utils.js') }}"></script>
 <script type="module" src="{{ url_for('static', filename='js/map.js') }}"></script>
 <script type="module" src="{{ url_for('static', filename='js/charts.js') }}"></script>
 <script type="module" src="{{ url_for('static', filename='js/activities.js') }}"></script>
 <script type="module" src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+<!-- And CSS -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 {% endblock %}
