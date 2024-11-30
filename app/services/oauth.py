@@ -30,12 +30,19 @@ def exchange_code_for_token(code):
     }
     
     try:
+        print("Exchanging code for token with params:", token_params)  # Debug
         response = requests.post(Config.TOKEN_URL, data=token_params)
-        response.raise_for_status()
-        return response.json()
-    except requests.exceptions.RequestException as e:
-        logger.error(f"Error exchanging code for token: {str(e)}")
-        raise Exception('Failed to exchange code for token')
+        print("Token exchange response:", response.status_code)  # Debug
+        
+        if response.status_code == 200:
+            return response.json()
+        else:
+            print(f"Token exchange failed: {response.text}")  # Debug
+            raise Exception('Failed to exchange code for token')
+            
+    except Exception as e:
+        print(f"Exception in exchange_code_for_token: {str(e)}")  # Debug
+        raise
 
 def refresh_token():
     """Refresh the OAuth access token."""

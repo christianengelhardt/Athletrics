@@ -7,24 +7,29 @@ logger = logging.getLogger(__name__)
 
 def fetch_strava_activities():
     """Fetch activities from Strava API."""
-    access_token = session['oauth_token']['access_token']
-    activities_url = 'https://www.strava.com/api/v3/athlete/activities'
-    headers = {'Authorization': f'Bearer {access_token}'}
-    params = {
-        'per_page': 100,
-        'include_all_efforts': True
-    }
-    
     try:
-        response = requests.get(activities_url, headers=headers, params=params)
-        response.raise_for_status()
+        access_token = session['oauth_token']['access_token']
+        activities_url = 'https://www.strava.com/api/v3/athlete/activities'
+        headers = {'Authorization': f'Bearer {access_token}'}
+        params = {
+            'per_page': 100,
+            'include_all_efforts': True
+        }
         
-        activities = response.json()
-        # Filter activities to only include ones with map data
-        return [activity for activity in activities 
-                if activity.get('map', {}).get('summary_polyline')]
-    except requests.exceptions.RequestException as e:
-        logger.error(f"Failed to fetch activities: {str(e)}")
+        print("Fetching with token:", access_token)  # Debug
+        response = requests.get(activities_url, headers=headers, params=params)
+        print("Response status:", response.status_code)  # Debug
+        
+        if response.status_code == 200:
+            activities = response.json()
+            print(f"Fetched {len(activities)} activities")  # Debug
+            return activities
+        else:
+            print(f"Error fetching activities: {response.text}")  # Debug
+            return []
+            
+    except Exception as e:
+        print(f"Exception in fetch_strava_activities: {str(e)}")  # Debug
         return []
 
 def get_activity_streams(activity_id):
