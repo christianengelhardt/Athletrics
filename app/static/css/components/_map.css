@@ -1,0 +1,124 @@
+/* Map Container */
+#map {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Mapbox Controls */
+.mapboxgl-control-container {
+    font-family: var(--font-family);
+}
+
+.mapboxgl-ctrl-group {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.mapboxgl-ctrl-group button {
+    width: 36px;
+    height: 36px;
+}
+
+/* Custom Map Controls */
+.map-style-control {
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    background: white;
+    border-radius: 4px;
+    box-shadow: var(--shadow);
+    z-index: 1;
+}
+
+.map-style-select {
+    appearance: none;
+    background: white;
+    border: none;
+    padding: 8px 32px 8px 12px;
+    font-size: var(--font-size-small);
+    border-radius: 4px;
+    cursor: pointer;
+    color: var(--text);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 16px;
+    transition: var(--transition);
+}
+
+.map-style-select:hover {
+    background-color: var(--background);
+}
+
+.map-maximize-button {
+    position: absolute;
+    top: 10px;
+    right: 155px;
+    background: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.map-maximize-button:hover {
+    background-color: var(--background);
+}
+
+.map-maximize-button svg {
+    width: 20px;
+    height: 20px;
+    color: var(--text);
+}
+
+/* Map Maximized State */
+.dashboard-grid.map-maximized {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    background: white;
+    height: 100vh !important;
+    padding: 0;
+    gap: 0;
+}
+
+.dashboard-grid.map-maximized #map {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    border-radius: 0;
+}
+
+.dashboard-grid.map-maximized #activity-details {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 350px;
+    max-height: calc(100vh - 20px);
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+.dashboard-grid.map-maximized #activity-list {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 350px;
+    max-height: calc(100vh - 20px);
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+}

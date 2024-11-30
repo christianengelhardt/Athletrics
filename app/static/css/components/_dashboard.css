@@ -1,0 +1,204 @@
+/* Dashboard Layout */
+#strava-dashboard {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: auto 1fr;
+    padding: 1rem;
+    gap: var(--grid-gap);
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.dashboard-header {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+}
+
+.dashboard-header h1 {
+    font-size: var(--font-size-xl);
+    font-weight: 800;
+    color: var(--text);
+    position: relative;
+}
+
+.dashboard-header h1::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 2px;
+}
+
+.dashboard-grid {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+    gap: var(--grid-gap);
+}
+
+/* Dashboard Tiles */
+.dashboard-tile {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.tile-header {
+    padding: var(--tile-padding);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background: var(--card-bg);
+    z-index: 1;
+}
+
+.tile-title {
+    font-size: var(--font-size-large);
+    font-weight: 600;
+    color: var(--text);
+}
+
+.tile-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--tile-content-padding);
+}
+
+/* Grid Positions */
+#activity-details {
+    grid-column: 1 / 4;
+    grid-row: 1 / 9;
+}
+
+#map {
+    grid-column: 1 / 9;
+    grid-row: 9 / 21;
+}
+
+#activity-list {
+    grid-column: 4 / 9;
+    grid-row: 1 / 9;
+}
+
+#scatter-plot {
+    grid-column: 9 / 15;
+    grid-row: 1 / 11;
+}
+
+#zone-chart {
+    grid-column: 15 / 21;
+    grid-row: 1 / 11;
+}
+
+#time-domain-graph {
+    grid-column: 9 / 21;
+    grid-row: 11 / 21;
+}
+
+/* User Controls */
+.user-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logout-button {
+    padding: 0.5rem 1rem;
+    background: var(--primary);
+    color: white;
+    border-radius: 4px;
+    font-size: var(--font-size-small);
+    transition: var(--transition);
+}
+
+.logout-button:hover {
+    background: var(--primary-dark);
+}
+
+/* Responsive Layout */
+@media (max-width: 1400px) {
+    .dashboard-grid {
+        grid-template-columns: repeat(12, 1fr);
+    }
+
+    #activity-details {
+        grid-column: 1 / 5;
+        grid-row: 1 / 7;
+    }
+
+    #activity-list {
+        grid-column: 5 / 9;
+        grid-row: 1 / 7;
+    }
+
+    #map {
+        grid-column: 9 / 13;
+        grid-row: 1 / 7;
+    }
+
+    #scatter-plot {
+        grid-column: 1 / 5;
+        grid-row: 7 / 13;
+    }
+
+    #zone-chart {
+        grid-column: 5 / 9;
+        grid-row: 7 / 13;
+    }
+
+    #time-domain-graph {
+        grid-column: 9 / 13;
+        grid-row: 7 / 13;
+    }
+}
+
+@media (max-width: 1024px) {
+    .dashboard-grid {
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: auto;
+    }
+
+    #activity-details,
+    #activity-list,
+    #map,
+    #scatter-plot,
+    #zone-chart,
+    #time-domain-graph {
+        grid-column: 1 / -1;
+        height: 400px;
+    }
+
+    #activity-details {
+        grid-row: 1;
+    }
+
+    #activity-list {
+        grid-row: 2;
+    }
+
+    #map {
+        grid-row: 3;
+    }
+
+    #scatter-plot {
+        grid-row: 4;
+    }
+
+    #zone-chart {
+        grid-row: 5;
+    }
+
+    #time-domain-graph {
+        grid-row: 6;
+    }
+}

@@ -1,0 +1,142 @@
+/* Activity List */
+.activity-item {
+    background: var(--background);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.activity-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+    background-color: var(--hover-bg);
+}
+
+.activity-item-selected {
+    border-left: 4px solid var(--accent);
+    background-color: var(--selection-bg);
+}
+
+.activity-item-date {
+    font-size: var(--font-size-small);
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+}
+
+.activity-item-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.activity-item-type {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    color: white;
+    white-space: nowrap;
+}
+
+.activity-item-title {
+    font-size: var(--font-size-base);
+    color: var(--text);
+    font-weight: 500;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.activity-item-stats {
+    display: flex;
+    gap: 1rem;
+    font-size: var(--font-size-small);
+    color: var(--text-secondary);
+}
+
+.activity-item-stat {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.activity-item-stat-value {
+    color: var(--text);
+    font-weight: 500;
+}
+
+/* Activity Details */
+.activity-header {
+    margin-bottom: 1.5rem;
+}
+
+.activity-header h2 {
+    font-size: var(--font-size-large);
+    margin-bottom: 0.5rem;
+}
+
+.activity-badges {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.activity-type {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: var(--font-size-small);
+    color: white;
+}
+
+.date-info {
+    color: var(--text-secondary);
+    font-size: var(--font-size-small);
+}
+
+/* Activity Stats */
+.activity-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.75rem;
+}
+
+.stat-item {
+    background: var(--background);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.stat-label {
+    font-size: var(--font-size-small);
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+}
+
+.stat-value {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--text);
+}
+
+/* Latest Activity Badge */
+.latest-activity-info {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.75rem;
+    background: var(--background);
+    border-radius: 1rem;
+    font-size: var(--font-size-small);
+    color: var(--text-secondary);
+}
+
+.latest-activity-info svg {
+    width: 14px;
+    height: 14px;
+    color: var(--accent);
+}

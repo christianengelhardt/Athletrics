@@ -1,0 +1,236 @@
+/* Chart Container Styles */
+.chart-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding: var(--tile-padding);
+}
+
+/* Scatter Plot Styles */
+#scatter-plot svg,
+#zone-chart svg,
+#time-domain-graph svg {
+    width: 100%;
+    height: 100%;
+    font-family: var(--font-family);
+}
+
+/* Tooltip Styles */
+.tooltip {
+    position: absolute;
+    background: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    pointer-events: none;
+    box-shadow: var(--shadow);
+    z-index: var(--z-tooltip);
+    transition: opacity 0.2s;
+    color: var(--text);
+    line-height: 1.4;
+}
+
+/* Heart Rate Zones Chart */
+.zone-chart-container {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2rem;
+    height: 100%;
+    align-items: center;
+    padding: 1rem;
+}
+
+.zone-donut-section {
+    width: 240px;
+    height: 240px;
+}
+
+.zone-list-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    overflow-y: auto;
+    padding-right: 1rem;
+}
+
+.zone-list-item {
+    display: grid;
+    grid-template-areas:
+        "color name . percent"
+        "color range . .";
+    grid-template-columns: auto auto 1fr auto;
+    align-items: start;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.zone-list-item:hover {
+    background-color: var(--hover-bg);
+}
+
+.zone-color {
+    grid-area: color;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    margin-top: 6px;
+}
+
+.zone-name {
+    grid-area: name;
+    font-size: var(--font-size-small);
+    font-weight: 500;
+    color: var(--text);
+}
+
+.zone-range {
+    grid-area: range;
+    color: var(--text-secondary);
+    font-size: var(--font-size-small);
+}
+
+.zone-percentage {
+    grid-area: percent;
+    font-size: var(--font-size-small);
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Time Domain Graph */
+.time-domain-line {
+    fill: none;
+    stroke-width: 2;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+
+.hover-line {
+    stroke: var(--text-secondary);
+    stroke-width: 1px;
+    stroke-dasharray: 3, 3;
+    pointer-events: none;
+}
+
+/* Chart Axes */
+.axis path,
+.axis line {
+    stroke: #e2e8f0;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+    fill: var(--text-secondary);
+    font-size: 12px;
+    font-family: var(--font-family);
+}
+
+.axis-title {
+    fill: var(--text);
+    font-size: var(--font-size-base);
+    font-weight: 500;
+}
+
+/* Loading and Error States */
+.no-data-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 2rem;
+    color: var(--text-secondary);
+    font-size: var(--font-size-base);
+    text-align: center;
+}
+
+/* Chart Labels */
+.max-hr-text {
+    font-size: var(--font-size-small);
+    fill: var(--text-secondary);
+    text-anchor: middle;
+}
+
+.max-hr-value {
+    font-size: var(--font-size-large);
+    font-weight: 600;
+    fill: var(--text);
+    text-anchor: middle;
+}
+
+/* Zone Chart Specific */
+.donut-center-text {
+    text-anchor: middle;
+    dominant-baseline: middle;
+}
+
+/* Chart Point Styles */
+.data-point {
+    transition: opacity 0.2s;
+}
+
+.data-point:hover {
+    opacity: 1 !important;
+}
+
+/* Chart Grid Lines */
+.grid line {
+    stroke: #e2e8f0;
+    stroke-opacity: 0.2;
+    shape-rendering: crispEdges;
+}
+
+.grid path {
+    stroke-width: 0;
+}
+
+/* Chart Legends */
+.chart-legend {
+    display: flex;
+    gap: 1rem;
+    padding: 0.5rem;
+    font-size: var(--font-size-small);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+    .zone-chart-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        gap: 1rem;
+    }
+
+    .zone-donut-section {
+        width: 180px;
+        height: 180px;
+        justify-self: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .chart-container {
+        padding: 0.5rem;
+    }
+
+    .axis text {
+        font-size: 10px;
+    }
+
+    .tooltip {
+        font-size: 10px;
+        padding: 6px 10px;
+    }
+}

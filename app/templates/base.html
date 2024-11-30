@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Athletrics - Advanced Strava Activity Analysis">
+    <title>{% block title %}Athletrics{% endblock %}</title>
+
+    <!-- Base CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    <!-- Block for additional page-specific head elements -->
+    {% block head %}{% endblock %}
+</head>
+
+<body>
+    <!-- Main content -->
+    {% block content %}{% endblock %}
+
+    <!-- Footer scripts -->
+    {% block scripts %}{% endblock %}
+</body>
+
+</html>

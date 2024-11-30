@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}Athletrics - Dashboard{% endblock %}
+
+{% block head %}
+<!-- Mapbox -->
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
+
+<!-- D3.js -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<div id="strava-dashboard">
+    <div class="dashboard-header">
+        <h1>Dashboard</h1>
+        <div class="user-controls">
+            <a href="{{ url_for('auth.logout') }}" class="logout-button">Logout</a>
+        </div>
+    </div>
+
+    <div class="dashboard-grid">
+        <!-- Map Section -->
+        <div id="map" class="dashboard-tile">
+            <div class="tile-header">
+                <h2 class="tile-title">Activity Map</h2>
+            </div>
+            <div class="tile-content"></div>
+        </div>
+
+        <!-- Activity Details -->
+        <div id="activity-details" class="dashboard-tile">
+            <div class="tile-header">
+                <h2 class="tile-title">Activity Details</h2>
+            </div>
+            <div class="tile-content"></div>
+        </div>
+
+        <!-- Activity List -->
+        <div id="activity-list" class="dashboard-tile">
+            <div class="tile-header">
+                <h2 class="tile-title">Activities</h2>
+            </div>
+            <div class="tile-content"></div>
+        </div>
+
+        <!-- Performance Analysis -->
+        <div id="scatter-plot" class="dashboard-tile">
+            <div class="tile-header">
+                <h2 class="tile-title">Heart Rate vs. Speed</h2>
+            </div>
+            <div class="tile-content"></div>
+        </div>
+
+        <div id="zone-chart" class="dashboard-tile">
+            <div class="tile-header">
+                <h2 class="tile-title">Heart Rate Zones</h2>
+            </div>
+            <div class="tile-content"></div>
+        </div>
+
+        <div id="time-domain-graph" class="dashboard-tile">
+            <div class="tile-header">
+                <h2 class="tile-title">Heart Rate Over Distance</h2>
+            </div>
+            <div class="tile-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Activity data -->
+<script id="strava-data" type="application/json">
+    {{ activities|tojson|safe }}
+</script>
+{% endblock %}
+
+{% block scripts %}
+<!-- Application Scripts -->
+<script type="module" src="{{ url_for('static', filename='js/utils.js') }}"></script>
+<script type="module" src="{{ url_for('static', filename='js/map.js') }}"></script>
+<script type="module" src="{{ url_for('static', filename='js/charts.js') }}"></script>
+<script type="module" src="{{ url_for('static', filename='js/activities.js') }}"></script>
+<script type="module" src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}
