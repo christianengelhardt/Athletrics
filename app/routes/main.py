@@ -17,4 +17,5 @@ def dashboard():
         return redirect(url_for('auth.login'))
     
     activities = fetch_strava_activities()
+    print(f"Fetched {len(activities)} activities")  # Debug line
     return render_template('dashboard.html', activities=activities)
